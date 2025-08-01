@@ -1,0 +1,1237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portafolio - Roberto Ayra</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <style>
+    body { background: #f8fafc; color: #1f2937; }
+    
+    /* Navegación moderna */
+    .nav-modern {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    }
+    
+    .nav-link {
+      position: relative;
+      padding: 0.875rem 1.75rem;
+      color: #64748b;
+      font-weight: 500;
+      border-radius: 0.75rem;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .nav-link:hover {
+      color: #1e40af;
+      background: rgba(59, 130, 246, 0.1);
+      transform: translateY(-2px);
+    }
+    
+    .nav-link.active {
+      color: #1e40af;
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(14, 165, 233, 0.1));
+    }
+    
+    .nav-number {
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      background: linear-gradient(135deg, #3b82f6, #0ea5e9);
+      color: white;
+      border-radius: 50%;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-align: center;
+      line-height: 24px;
+      margin-right: 0.5rem;
+    }
+    
+    .logo-text {
+      font-size: 1.5rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #1e40af, #0ea5e9);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .btn-cta {
+      background: linear-gradient(135deg, #3b82f6, #0ea5e9);
+      color: white;
+      padding: 0.75rem 2rem;
+      border-radius: 2rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+    }
+    
+    .btn-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+    }
+    
+    /* Menu mobile moderno */
+    .mobile-menu {
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(20px);
+      border-radius: 1rem;
+      margin: 1rem;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+    
+    .hamburger {
+      width: 24px;
+      height: 24px;
+      position: relative;
+      cursor: pointer;
+    }
+    
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 3px;
+      background: linear-gradient(135deg, #3b82f6, #0ea5e9);
+      border-radius: 2px;
+      margin: 4px 0;
+      transition: all 0.3s ease;
+    }
+    
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+    
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -6px);
+    }
+    
+    .btn-primary { @apply bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-500 transition; }
+    .btn-outline { @apply border border-blue-600 text-blue-600 px-6 py-3 rounded-md hover:bg-blue-50 transition; }
+    
+    /* Animaciones para el hero - Optimizadas */
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    @keyframes pulse-glow {
+      0%, 100% { opacity: 0.8; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.05); }
+    }
+    
+    @keyframes gradient-shift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    .floating { 
+      animation: float 8s ease-in-out infinite;
+      will-change: transform;
+    }
+    .floating-delayed { 
+      animation: float 8s ease-in-out infinite 3s;
+      will-change: transform;
+    }
+    .pulse-glow { 
+      animation: pulse-glow 4s ease-in-out infinite;
+      will-change: opacity, transform;
+    }
+    
+    .animated-gradient {
+      background: linear-gradient(-45deg, #1e3a8a, #1e40af, #3b82f6, #0ea5e9, #06b6d4, #0891b2);
+      background-size: 300% 300%;
+      animation: gradient-shift 12s ease infinite;
+      will-change: background-position;
+    }
+    
+    .hero-glass {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .text-glow {
+      text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    }
+    
+    /* Control de rendimiento - pausar animaciones si es necesario */
+    @media (prefers-reduced-motion: reduce) {
+      .floating,
+      .floating-delayed,
+      .pulse-glow,
+      .animated-gradient {
+        animation: none;
+      }
+    }
+  </style>
+</head>
+<body class="font-sans">
+
+  <!-- Navegación Moderna -->
+  <nav class="fixed top-0 w-full nav-modern z-50">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex justify-between items-center py-5">
+        <!-- Logo/Marca -->
+        <div class="flex items-center space-x-3">
+          <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center">
+            <span class="text-white font-bold text-lg">RA</span>
+          </div>
+          <div class="logo-text">Roberto Ayra</div>
+        </div>
+
+        <!-- Navegación Desktop -->
+        <div class="hidden lg:flex items-center space-x-6">
+          <a href="#hero" class="nav-link active" data-section="hero">
+            <span class="nav-number">01</span>Inicio
+          </a>
+          <a href="#about" class="nav-link" data-section="about">
+            <span class="nav-number">02</span>Sobre Mí
+          </a>
+          <a href="#skills" class="nav-link" data-section="skills">
+            <span class="nav-number">03</span>Habilidades
+          </a>
+          <a href="#languages" class="nav-link" data-section="languages">
+            <span class="nav-number">04</span>Stack
+          </a>
+          <a href="#work" class="nav-link" data-section="work">
+            <span class="nav-number">05</span>Experiencia
+          </a>
+          <a href="#projects" class="nav-link" data-section="projects">
+            <span class="nav-number">06</span>Proyectos
+          </a>
+        </div>
+
+        <!-- CTA Button Desktop -->
+        <div class="hidden lg:block ml-8">
+          <a href="#contact" class="btn-cta">
+            💬 Contáctame
+          </a>
+        </div>
+
+        <!-- Menu Mobile Button -->
+        <div class="lg:hidden">
+          <button id="mobile-menu-btn" class="hamburger" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Menu Mobile -->
+    <div id="mobile-menu" class="lg:hidden fixed inset-0 top-20 z-40 transform translate-x-full transition-transform duration-300 ease-in-out">
+      <div class="mobile-menu p-6 space-y-4">
+        <a href="#hero" class="nav-link mobile-nav-link block" data-section="hero">
+          <span class="nav-number">01</span>Inicio
+        </a>
+        <a href="#about" class="nav-link mobile-nav-link block" data-section="about">
+          <span class="nav-number">02</span>Sobre Mí
+        </a>
+        <a href="#skills" class="nav-link mobile-nav-link block" data-section="skills">
+          <span class="nav-number">03</span>Habilidades
+        </a>
+        <a href="#languages" class="nav-link mobile-nav-link block" data-section="languages">
+          <span class="nav-number">04</span>Stack Tecnológico
+        </a>
+        <a href="#work" class="nav-link mobile-nav-link block" data-section="work">
+          <span class="nav-number">05</span>Experiencia
+        </a>
+        <a href="#projects" class="nav-link mobile-nav-link block" data-section="projects">
+          <span class="nav-number">06</span>Proyectos
+        </a>
+        <div class="pt-4 border-t border-gray-200">
+          <a href="#contact" class="btn-cta block text-center">
+            💬 Contáctame
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="pt-24">
+
+    <!-- Hero -->
+    <section id="hero" class="relative min-h-screen flex items-center text-white overflow-hidden">
+      <!-- Fondo animado con gradiente dinámico -->
+      <div class="absolute inset-0 animated-gradient"></div>
+      
+      <!-- Partículas flotantes -->
+      <div class="absolute inset-0">
+        <div class="absolute top-1/4 left-1/4 w-2 h-2 bg-white rounded-full opacity-30 floating"></div>
+        <div class="absolute top-1/3 right-1/4 w-3 h-3 bg-white rounded-full opacity-40 floating-delayed"></div>
+        <div class="absolute bottom-1/4 left-1/3 w-1 h-1 bg-white rounded-full opacity-50 floating"></div>
+        <div class="absolute top-1/2 right-1/3 w-2 h-2 bg-white rounded-full opacity-30 floating-delayed"></div>
+        <div class="absolute bottom-1/3 right-1/2 w-1 h-1 bg-white rounded-full opacity-40 floating"></div>
+      </div>
+      
+      <!-- Overlay con patrón -->
+      <div class="absolute inset-0" style="background-image:url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2240%22 height=%2240%22%3E%3Ccircle cx=%2220%22 cy=%2220%22 r=%221%22 fill=%22white%22 fill-opacity=%220.1%22/%3E%3C/svg%3E'); background-repeat:repeat; opacity:0.3;"></div>
+      
+      <div class="relative z-10 max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <!-- Columna de texto -->
+        <div class="text-center lg:text-left space-y-8">
+          <!-- Badge -->
+          <div class="inline-flex items-center px-4 py-2 bg-white bg-opacity-20 rounded-full text-sm font-medium hero-glass">
+            <span class="w-2 h-2 bg-green-400 rounded-full mr-2 pulse-glow"></span>
+            Disponible para nuevos proyectos
+          </div>
+          
+          <!-- Saludo animado -->
+          <div class="space-y-4">
+            <p class="text-xl opacity-90 font-light">¡Hola! 👋 Soy</p>
+            <h1 class="text-6xl md:text-7xl lg:text-8xl font-black text-glow">
+              <span class="block">Roberto</span>
+              <span class="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-blue-300 to-indigo-300">Ayra</span>
+            </h1>
+          </div>
+          
+          <!-- Subtítulo con efecto typewriter -->
+          <div class="space-y-4">
+            <p class="text-2xl md:text-3xl font-semibold text-cyan-200">
+              Data Engineer Senior 🚀
+            </p>
+            <p class="text-xl opacity-90 font-light max-w-lg mx-auto lg:mx-0">
+              Transformando datos en decisiones estratégicas con <span class="text-cyan-300 font-semibold">AWS, Snowflake & MLOps</span>
+            </p>
+          </div>
+          
+          <!-- Botones mejorados -->
+          <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
+            <a href="#projects" class="group relative px-8 py-4 bg-white text-gray-900 rounded-full font-semibold transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+              <span class="relative z-10">🎯 Ver Proyectos</span>
+              <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            </a>
+            <a href="#contact" class="group px-8 py-4 border-2 border-white text-white rounded-full font-semibold transition-all duration-300 hover:bg-white hover:text-gray-900 hero-glass">
+              💬 Contáctame</a>
+          </div>
+          
+          <!-- Stats rápidas -->
+          <div class="flex justify-center lg:justify-start gap-8 pt-8">
+            <div class="text-center">
+              <div class="text-2xl font-bold text-cyan-300">6+</div>
+              <div class="text-sm opacity-80">Años Exp.</div>
+            </div>
+            <div class="text-center">
+              <div class="text-2xl font-bold text-cyan-300">50+</div>
+              <div class="text-sm opacity-80">TB Procesados</div>
+            </div>
+            <div class="text-center">
+              <div class="text-2xl font-bold text-cyan-300">20+</div>
+              <div class="text-sm opacity-80">Pipelines</div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Columna de visualización -->
+        <div class="relative flex justify-center lg:justify-end">
+          <!-- Contenedor de gráfico mejorado -->
+          <div class="relative hero-glass rounded-3xl p-8 floating">
+            <!-- Gráfico de red de datos animado -->
+            <svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto">
+              <!-- Conexiones con gradientes -->
+              <defs>
+                <linearGradient id="line1" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" style="stop-color:#0ea5e9;stop-opacity:0.8"/>
+                  <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:0.8"/>
+                </linearGradient>
+                <linearGradient id="line2" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" style="stop-color:#06b6d4;stop-opacity:0.8"/>
+                  <stop offset="100%" style="stop-color:#1e40af;stop-opacity:0.8"/>
+                </linearGradient>
+              </defs>
+              
+              <!-- Líneas de conexión -->
+              <line x1="60" y1="60" x2="150" y2="80" stroke="url(#line1)" stroke-width="3" class="floating"/>
+              <line x1="150" y1="80" x2="250" y2="60" stroke="url(#line2)" stroke-width="3" class="floating-delayed"/>
+              <line x1="250" y1="60" x2="340" y2="100" stroke="url(#line1)" stroke-width="3" class="floating"/>
+              <line x1="150" y1="80" x2="200" y2="170" stroke="url(#line2)" stroke-width="3" class="floating-delayed"/>
+              <line x1="200" y1="170" x2="120" y2="200" stroke="url(#line1)" stroke-width="3" class="floating"/>
+              <line x1="200" y1="170" x2="280" y2="220" stroke="url(#line2)" stroke-width="3" class="floating-delayed"/>
+              
+              <!-- Nodos principales -->
+              <circle cx="60" cy="60" r="12" fill="#0ea5e9" class="pulse-glow"/>
+              <circle cx="150" cy="80" r="15" fill="#3b82f6" class="pulse-glow"/>
+              <circle cx="250" cy="60" r="12" fill="#06b6d4" class="pulse-glow"/>
+              <circle cx="340" cy="100" r="10" fill="#1e40af" class="pulse-glow"/>
+              <circle cx="200" cy="170" r="18" fill="#0891b2" class="pulse-glow"/>
+              <circle cx="120" cy="200" r="10" fill="#0ea5e9" class="pulse-glow"/>
+              <circle cx="280" cy="220" r="12" fill="#3b82f6" class="pulse-glow"/>
+              
+              <!-- Etiquetas de tecnología -->
+              <text x="60" y="45" text-anchor="middle" fill="white" font-size="10" font-weight="bold">AWS</text>
+              <text x="150" y="65" text-anchor="middle" fill="white" font-size="10" font-weight="bold">Python</text>
+              <text x="250" y="45" text-anchor="middle" fill="white" font-size="10" font-weight="bold">SQL</text>
+              <text x="340" y="85" text-anchor="middle" fill="white" font-size="8" font-weight="bold">Docker</text>
+              <text x="200" y="155" text-anchor="middle" fill="white" font-size="12" font-weight="bold">Data Lake</text>
+              <text x="120" y="185" text-anchor="middle" fill="white" font-size="8" font-weight="bold">ML</text>
+              <text x="280" y="205" text-anchor="middle" fill="white" font-size="10" font-weight="bold">BI</text>
+            </svg>
+          </div>
+          
+          <!-- Elementos flotantes adicionales -->
+          <div class="absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full opacity-20 floating"></div>
+          <div class="absolute -bottom-8 -left-8 w-32 h-32 bg-gradient-to-br from-indigo-500 to-blue-600 rounded-full opacity-15 floating-delayed"></div>
+        </div>
+      </div>
+      
+      <!-- Scroll indicator -->
+      <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white opacity-70">
+        <div class="flex flex-col items-center space-y-2">
+          <span class="text-sm">Scroll para explorar</span>
+          <div class="w-6 h-10 border-2 border-white rounded-full flex justify-center">
+            <div class="w-1 h-3 bg-white rounded-full mt-2 floating"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sobre Mí -->
+    <section id="about" class="relative py-20 bg-gradient-to-br from-slate-50 to-blue-50 overflow-hidden">
+      <!-- Elementos decorativos de fondo -->
+      <div class="absolute top-0 left-0 w-72 h-72 bg-gradient-to-br from-blue-100 to-cyan-100 rounded-full opacity-30 -translate-x-1/2 -translate-y-1/2"></div>
+      <div class="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-br from-indigo-100 to-blue-100 rounded-full opacity-30 translate-x-1/2 translate-y-1/2"></div>
+      
+      <div class="relative max-w-6xl mx-auto px-6">
+        <!-- Header de sección -->
+        <div class="text-center mb-16">
+          <span class="inline-block px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-semibold mb-4">
+            Conoce más sobre mí
+          </span>
+          <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            Transformando datos en 
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-600">decisiones inteligentes</span>
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <!-- Contenido principal -->
+          <div class="space-y-6">
+            <p class="text-lg text-gray-700 leading-relaxed">
+              Ingeniero de Datos con más de <span class="font-semibold text-blue-600">6 años</span> liderando arquitecturas en AWS y Snowflake, automatizando pipelines ETL/ELT, implementando prácticas MLOps y generando dashboards en Power BI, Tableau y Looker.
+            </p>
+            <p class="text-lg text-gray-700 leading-relaxed">
+              Apasionado por <span class="font-semibold text-cyan-600">optimizar procesos</span> y convertir datos complejos en decisiones estratégicas que impulsan el crecimiento empresarial.
+            </p>
+            
+            <!-- Skills destacadas -->
+            <div class="flex flex-wrap gap-3 pt-4">
+              <span class="px-4 py-2 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-full text-sm font-medium">
+                ☁️ Cloud Architecture
+              </span>
+              <span class="px-4 py-2 bg-gradient-to-r from-indigo-500 to-blue-500 text-white rounded-full text-sm font-medium">
+                🚀 MLOps
+              </span>
+              <span class="px-4 py-2 bg-gradient-to-r from-cyan-500 to-teal-500 text-white rounded-full text-sm font-medium">
+                📊 Big Data Analytics
+              </span>
+            </div>
+          </div>
+
+          <!-- Métricas de impacto rediseñadas -->
+          <div class="grid grid-cols-2 gap-6">
+            <div class="group bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-blue-100 hover:border-blue-300">
+              <div class="text-3xl font-bold text-blue-600 mb-2 group-hover:scale-110 transition-transform">50+ TB</div>
+              <div class="text-sm text-gray-600 font-medium">Datos procesados mensualmente</div>
+              <div class="w-full bg-blue-100 rounded-full h-1 mt-3">
+                <div class="bg-gradient-to-r from-blue-500 to-cyan-500 h-1 rounded-full" style="width:95%"></div>
+              </div>
+            </div>
+            
+            <div class="group bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-green-100 hover:border-green-300">
+              <div class="text-3xl font-bold text-green-600 mb-2 group-hover:scale-110 transition-transform">85%</div>
+              <div class="text-sm text-gray-600 font-medium">Reducción en tiempo de carga</div>
+              <div class="w-full bg-green-100 rounded-full h-1 mt-3">
+                <div class="bg-gradient-to-r from-green-500 to-emerald-500 h-1 rounded-full" style="width:85%"></div>
+              </div>
+            </div>
+            
+            <div class="group bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-purple-100 hover:border-purple-300">
+              <div class="text-3xl font-bold text-purple-600 mb-2 group-hover:scale-110 transition-transform">20+</div>
+              <div class="text-sm text-gray-600 font-medium">Pipelines automatizados</div>
+              <div class="w-full bg-purple-100 rounded-full h-1 mt-3">
+                <div class="bg-gradient-to-r from-purple-500 to-indigo-500 h-1 rounded-full" style="width:90%"></div>
+              </div>
+            </div>
+            
+            <div class="group bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-orange-100 hover:border-orange-300">
+              <div class="text-3xl font-bold text-orange-600 mb-2 group-hover:scale-110 transition-transform">99.9%</div>
+              <div class="text-sm text-gray-600 font-medium">Uptime de sistemas</div>
+              <div class="w-full bg-orange-100 rounded-full h-1 mt-3">
+                <div class="bg-gradient-to-r from-orange-500 to-red-500 h-1 rounded-full" style="width:99%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Habilidades -->
+    <section id="skills" class="relative py-20 bg-white overflow-hidden">
+      <!-- Elementos decorativos -->
+      <div class="absolute top-20 left-10 w-32 h-32 bg-gradient-to-br from-blue-200 to-cyan-200 rounded-full opacity-20 floating"></div>
+      <div class="absolute bottom-20 right-10 w-48 h-48 bg-gradient-to-br from-indigo-200 to-purple-200 rounded-full opacity-20 floating-delayed"></div>
+      
+      <div class="relative max-w-7xl mx-auto px-6">
+        <!-- Header de sección -->
+        <div class="text-center mb-16">
+          <span class="inline-block px-4 py-2 bg-gradient-to-r from-blue-100 to-cyan-100 text-blue-800 rounded-full text-sm font-semibold mb-4">
+            Áreas de expertise
+          </span>
+          <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            Habilidades 
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-600">Core</span>
+          </h2>
+          <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+            Dominio profundo en tecnologías de vanguardia para arquitecturas de datos escalables
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <!-- Cloud & AWS -->
+          <div class="group relative bg-gradient-to-br from-blue-50 to-cyan-50 p-8 rounded-3xl border border-blue-100 hover:border-blue-300 hover:shadow-2xl transition-all duration-500 hover:scale-105">
+            <div class="absolute inset-0 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-3xl opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
+            <div class="relative z-10">
+              <div class="text-5xl mb-6 group-hover:scale-110 transition-transform duration-300">☁️</div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3">Cloud & AWS</h3>
+              <p class="text-gray-600 mb-4 text-sm leading-relaxed">Arquitecturas escalables y optimización de costos</p>
+              <div class="space-y-2 text-xs text-gray-500">
+                <span class="block">• S3, Glue, Lambda</span>
+                <span class="block">• MSK, Redshift, Athena</span>
+                <span class="block">• CloudFormation, CDK</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Snowflake -->
+          <div class="group relative bg-gradient-to-br from-indigo-50 to-purple-50 p-8 rounded-3xl border border-indigo-100 hover:border-indigo-300 hover:shadow-2xl transition-all duration-500 hover:scale-105">
+            <div class="absolute inset-0 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-3xl opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
+            <div class="relative z-10">
+              <div class="text-5xl mb-6 group-hover:scale-110 transition-transform duration-300">❄️</div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3">Snowflake</h3>
+              <p class="text-gray-600 mb-4 text-sm leading-relaxed">Data warehouse moderno y procesamiento en tiempo real</p>
+              <div class="space-y-2 text-xs text-gray-500">
+                <span class="block">• Snowpipe, Tasks</span>
+                <span class="block">• Time Travel, Cloning</span>
+                <span class="block">• Performance Tuning</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- MLOps -->
+          <div class="group relative bg-gradient-to-br from-purple-50 to-pink-50 p-8 rounded-3xl border border-purple-100 hover:border-purple-300 hover:shadow-2xl transition-all duration-500 hover:scale-105">
+            <div class="absolute inset-0 bg-gradient-to-br from-purple-500 to-pink-500 rounded-3xl opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
+            <div class="relative z-10">
+              <div class="text-5xl mb-6 group-hover:scale-110 transition-transform duration-300">🤖</div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3">MLOps</h3>
+              <p class="text-gray-600 mb-4 text-sm leading-relaxed">Pipelines de ML automatizados y monitoreo</p>
+              <div class="space-y-2 text-xs text-gray-500">
+                <span class="block">• SageMaker, MLflow</span>
+                <span class="block">• CI/CD para ML</span>
+                <span class="block">• Model Monitoring</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Visualización -->
+          <div class="group relative bg-gradient-to-br from-yellow-50 to-orange-50 p-8 rounded-3xl border border-yellow-100 hover:border-yellow-300 hover:shadow-2xl transition-all duration-500 hover:scale-105">
+            <div class="absolute inset-0 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-3xl opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
+            <div class="relative z-10">
+              <div class="text-5xl mb-6 group-hover:scale-110 transition-transform duration-300">📊</div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3">Visualización</h3>
+              <p class="text-gray-600 mb-4 text-sm leading-relaxed">Dashboards interactivos y storytelling con datos</p>
+              <div class="space-y-2 text-xs text-gray-500">
+                <span class="block">• Power BI, Tableau</span>
+                <span class="block">• Looker, Plotly</span>
+                <span class="block">• Data Storytelling</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lenguajes & Herramientas -->
+    <section id="languages" class="max-w-6xl mx-auto mt-16 px-6">
+      <h2 class="text-3xl font-bold text-center text-blue-800 mb-8">Stack Tecnológico</h2>
+      
+      <!-- Categorías de tecnologías -->
+      <div class="space-y-8">
+        <!-- Cloud & Infrastructure -->
+        <div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+            <span class="text-2xl mr-2">☁️</span> Cloud & Infrastructure
+          </h3>
+          <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+            <div class="bg-white p-4 rounded-lg shadow hover:shadow-lg transition text-center">
+              <div class="text-3xl text-orange-500 mb-2">☁️</div>
+              <p class="font-medium text-blue-800 text-sm">AWS</p>
+              <div class="w-full bg-gray-200 rounded-full h-1 mt-2"><div class="bg-blue-400 h-1 rounded-full" style="width:90%"></div></div>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow hover:shadow-lg transition text-center">
+              <div class="text-3xl text-indigo-600 mb-2">❄️</div>
+              <p class="font-medium text-blue-800 text-sm">Snowflake</p>
+              <div class="w-full bg-gray-200 rounded-full h-1 mt-2"><div class="bg-blue-400 h-1 rounded-full" style="width:85%"></div></div>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow hover:shadow-lg transition text-center">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" class="w-8 h-8 mx-auto mb-2" alt="Docker"/>
+              <p class="font-medium text-blue-800 text-sm">Docker</p>
+              <div class="w-full bg-gray-200 rounded-full h-1 mt-2"><div class="bg-blue-400 h-1 rounded-full" style="width:70%"></div></div>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow hover:shadow-lg transition text-center">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg" class="w-8 h-8 mx-auto mb-2" alt="Jenkins"/>
+              <p class="font-medium text-blue-800 text-sm">Jenkins</p>
+              <div class="w-full bg-gray-200 rounded-full h-1 mt-2"><div class="bg-blue-400 h-1 rounded-full" style="width:65%"></div></div>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow hover:shadow-lg transition text-center">
+              <div class="text-3xl text-green-600 mb-2">🔄</div>
+              <p class="font-medium text-blue-800 text-sm">Airflow</p>
+              <div class="w-full bg-gray-200 rounded-full h-1 mt-2"><div class="bg-blue-400 h-1 rounded-full" style="width:80%"></div></div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Programming & Data Processing -->
+        <div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+            <span class="text-2xl mr-2">💻</span> Programming & Data Processing
+          </h3>
+          <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+            <div class="bg-white p-4 rounded-lg shadow hover:shadow-lg transition text-center">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" class="w-8 h-8 mx-auto mb-2" alt="Python"/>
+              <p class="font-medium text-blue-800 text-sm">Python</p>
+              <div class="w-full bg-gray-200 rounded-full h-1 mt-2"><div class="bg-blue-400 h-1 rounded-full" style="width:90%"></div></div>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow hover:shadow-lg transition text-center">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" class="w-8 h-8 mx-auto mb-2" alt="SQL"/>
+              <p class="font-medium text-blue-800 text-sm">SQL</p>
+              <div class="w-full bg-gray-200 rounded-full h-1 mt-2"><div class="bg-blue-400 h-1 rounded-full" style="width:85%"></div></div>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow hover:shadow-lg transition text-center">
+              <div class="text-3xl text-orange-600 mb-2">🔧</div>
+              <p class="font-medium text-blue-800 text-sm">dbt</p>
+              <div class="w-full bg-gray-200 rounded-full h-1 mt-2"><div class="bg-blue-400 h-1 rounded-full" style="width:80%"></div></div>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow hover:shadow-lg transition text-center">
+              <div class="text-3xl text-yellow-600 mb-2">⚡</div>
+              <p class="font-medium text-blue-800 text-sm">PySpark</p>
+              <div class="w-full bg-gray-200 rounded-full h-1 mt-2"><div class="bg-blue-400 h-1 rounded-full" style="width:75%"></div></div>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow hover:shadow-lg transition text-center">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" class="w-8 h-8 mx-auto mb-2" alt="Bash"/>
+              <p class="font-medium text-blue-800 text-sm">Bash</p>
+              <div class="w-full bg-gray-200 rounded-full h-1 mt-2"><div class="bg-blue-400 h-1 rounded-full" style="width:75%"></div></div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Data Visualization & ML -->
+        <div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+            <span class="text-2xl mr-2">📊</span> Data Visualization & ML
+          </h3>
+          <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+            <div class="bg-white p-4 rounded-lg shadow hover:shadow-lg transition text-center">
+              <div class="text-3xl text-yellow-500 mb-2">📊</div>
+              <p class="font-medium text-blue-800 text-sm">Power BI</p>
+              <div class="w-full bg-gray-200 rounded-full h-1 mt-2"><div class="bg-blue-400 h-1 rounded-full" style="width:85%"></div></div>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow hover:shadow-lg transition text-center">
+              <div class="text-3xl text-blue-500 mb-2">📈</div>
+              <p class="font-medium text-blue-800 text-sm">Tableau</p>
+              <div class="w-full bg-gray-200 rounded-full h-1 mt-2"><div class="bg-blue-400 h-1 rounded-full" style="width:80%"></div></div>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow hover:shadow-lg transition text-center">
+              <div class="text-3xl text-green-500 mb-2">📉</div>
+              <p class="font-medium text-blue-800 text-sm">Looker</p>
+              <div class="w-full bg-gray-200 rounded-full h-1 mt-2"><div class="bg-blue-400 h-1 rounded-full" style="width:75%"></div></div>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow hover:shadow-lg transition text-center">
+              <div class="text-3xl text-purple-600 mb-2">🤖</div>
+              <p class="font-medium text-blue-800 text-sm">SageMaker</p>
+              <div class="w-full bg-gray-200 rounded-full h-1 mt-2"><div class="bg-blue-400 h-1 rounded-full" style="width:70%"></div></div>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow hover:shadow-lg transition text-center">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" class="w-8 h-8 mx-auto mb-2" alt="Git"/>
+              <p class="font-medium text-blue-800 text-sm">Git</p>
+              <div class="w-full bg-gray-200 rounded-full h-1 mt-2"><div class="bg-blue-400 h-1 rounded-full" style="width:80%"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Certificaciones -->
+    <section id="certifications" class="relative py-20 bg-gradient-to-br from-gray-50 to-slate-100 overflow-hidden">
+      <!-- Elementos decorativos -->
+      <div class="absolute top-0 right-0 w-80 h-80 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-full opacity-20 translate-x-1/3 -translate-y-1/3 floating"></div>
+      
+      <div class="relative max-w-5xl mx-auto px-6">
+        <!-- Header de sección -->
+        <div class="text-center mb-16">
+          <span class="inline-block px-4 py-2 bg-gradient-to-r from-indigo-100 to-purple-100 text-indigo-800 rounded-full text-sm font-semibold mb-4">
+            Validación profesional
+          </span>
+          <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            Certificaciones 
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">Oficiales</span>
+          </h2>
+          <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+            Credenciales que respaldan mi expertise en las principales plataformas tecnológicas
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- AWS Certification -->
+          <div class="group relative bg-white p-8 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 border-l-4 border-orange-400 hover:border-orange-500 hover:scale-105">
+            <div class="absolute inset-0 bg-gradient-to-br from-orange-500 to-red-500 rounded-3xl opacity-0 group-hover:opacity-5 transition-opacity duration-500"></div>
+            <div class="relative z-10 text-center">
+              <div class="w-16 h-16 bg-gradient-to-br from-orange-400 to-red-400 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                <span class="text-2xl">☁️</span>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-2">AWS Solutions Architect</h3>
+              <p class="text-orange-600 font-semibold mb-4">Associate Level</p>
+              <div class="space-y-2 text-sm text-gray-600">
+                <p>✓ Diseño de arquitecturas escalables</p>
+                <p>✓ Optimización de costos</p>
+                <p>✓ Mejores prácticas de seguridad</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Snowflake Certification -->
+          <div class="group relative bg-white p-8 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 border-l-4 border-indigo-400 hover:border-indigo-500 hover:scale-105">
+            <div class="absolute inset-0 bg-gradient-to-br from-indigo-500 to-blue-500 rounded-3xl opacity-0 group-hover:opacity-5 transition-opacity duration-500"></div>
+            <div class="relative z-10 text-center">
+              <div class="w-16 h-16 bg-gradient-to-br from-indigo-400 to-blue-400 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                <span class="text-2xl">❄️</span>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-2">Snowflake SnowPro</h3>
+              <p class="text-indigo-600 font-semibold mb-4">Core Certification</p>
+              <div class="space-y-2 text-sm text-gray-600">
+                <p>✓ Arquitectura de data warehouse</p>
+                <p>✓ Performance optimization</p>
+                <p>✓ Data sharing & governance</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- dbt Certification -->
+          <div class="group relative bg-white p-8 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 border-l-4 border-blue-400 hover:border-blue-500 hover:scale-105">
+            <div class="absolute inset-0 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-3xl opacity-0 group-hover:opacity-5 transition-opacity duration-500"></div>
+            <div class="relative z-10 text-center">
+              <div class="w-16 h-16 bg-gradient-to-br from-blue-400 to-cyan-400 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                <span class="text-2xl">🔧</span>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-2">dbt Analytics Engineering</h3>
+              <p class="text-blue-600 font-semibold mb-4">Certified Professional</p>
+              <div class="space-y-2 text-sm text-gray-600">
+                <p>✓ Modern data transformations</p>
+                <p>✓ Testing & documentation</p>
+                <p>✓ Version control workflows</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experiencia Profesional -->
+    <section id="work" class="relative py-20 bg-white overflow-hidden">
+      <!-- Elementos decorativos -->
+      <div class="absolute top-10 right-10 w-40 h-40 bg-gradient-to-br from-cyan-100 to-blue-100 rounded-full opacity-20 floating"></div>
+      <div class="absolute bottom-10 left-10 w-32 h-32 bg-gradient-to-br from-indigo-100 to-purple-100 rounded-full opacity-20 floating-delayed"></div>
+      
+      <div class="relative max-w-7xl mx-auto px-6">
+        <!-- Header de sección -->
+        <div class="text-center mb-16">
+          <span class="inline-block px-4 py-2 bg-gradient-to-r from-cyan-100 to-blue-100 text-cyan-800 rounded-full text-sm font-semibold mb-4">
+            Trayectoria profesional
+          </span>
+          <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            Experiencia 
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-blue-600">Profesional</span>
+          </h2>
+          <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+            +6 años construyendo arquitecturas de datos escalables y liderando transformaciones digitales
+          </p>
+        </div>
+
+        <div class="space-y-8">
+          <!-- Timeline line -->
+          <div class="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-cyan-300 to-blue-300 opacity-30 hidden lg:block"></div>
+          
+          <!-- Qualifacts -->
+          <div class="relative lg:grid lg:grid-cols-2 lg:gap-8 items-center">
+            <div class="lg:text-right lg:pr-8">
+              <div class="group bg-gradient-to-br from-cyan-50 to-blue-50 p-8 rounded-3xl border-l-4 border-cyan-400 hover:border-cyan-500 hover:shadow-2xl transition-all duration-500 hover:scale-105">
+                <div class="absolute inset-0 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-3xl opacity-0 group-hover:opacity-5 transition-opacity duration-500"></div>
+                <div class="relative z-10">
+                  <span class="inline-block px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-semibold mb-4">ACTUAL</span>
+                  <h3 class="text-2xl font-bold text-gray-900 mb-2">Data Engineer Senior</h3>
+                  <p class="text-cyan-600 font-semibold mb-4">Qualifacts • Jul 2023 – Presente</p>
+                  <ul class="space-y-3 text-gray-700">
+                    <li class="flex items-start"><span class="text-cyan-500 mr-2">▶</span>Arquitectura y optimización ETL con Talend y dbt</li>
+                    <li class="flex items-start"><span class="text-cyan-500 mr-2">▶</span>Flujos de datos AWS (MSK, S3, Lambda) con monitoreo</li>
+                    <li class="flex items-start"><span class="text-cyan-500 mr-2">▶</span>Transformaciones en dbt y tuning de Snowpipe tiempo real</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="hidden lg:block"></div>
+          </div>
+          
+          <!-- Inetum -->
+          <div class="relative lg:grid lg:grid-cols-2 lg:gap-8 items-center">
+            <div class="hidden lg:block"></div>
+            <div class="lg:pl-8">
+              <div class="group bg-gradient-to-br from-indigo-50 to-purple-50 p-8 rounded-3xl border-l-4 border-indigo-400 hover:border-indigo-500 hover:shadow-2xl transition-all duration-500 hover:scale-105">
+                <div class="absolute inset-0 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-3xl opacity-0 group-hover:opacity-5 transition-opacity duration-500"></div>
+                <div class="relative z-10">
+                  <h3 class="text-2xl font-bold text-gray-900 mb-2">Data Engineer</h3>
+                  <p class="text-indigo-600 font-semibold mb-4">Inetum • Jul 2022 – Jul 2023</p>
+                  <ul class="space-y-3 text-gray-700">
+                    <li class="flex items-start"><span class="text-indigo-500 mr-2">▶</span>Arquitecturas ML con AWS SageMaker</li>
+                    <li class="flex items-start"><span class="text-indigo-500 mr-2">▶</span>Automatización con PySpark y Airflow</li>
+                    <li class="flex items-start"><span class="text-indigo-500 mr-2">▶</span>Monitorización completa con MLflow</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Indra -->
+          <div class="relative lg:grid lg:grid-cols-2 lg:gap-8 items-center">
+            <div class="lg:text-right lg:pr-8">
+              <div class="group bg-gradient-to-br from-blue-50 to-cyan-50 p-8 rounded-3xl border-l-4 border-blue-400 hover:border-blue-500 hover:shadow-2xl transition-all duration-500 hover:scale-105">
+                <div class="absolute inset-0 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-3xl opacity-0 group-hover:opacity-5 transition-opacity duration-500"></div>
+                <div class="relative z-10">
+                  <h3 class="text-2xl font-bold text-gray-900 mb-2">Data Engineer</h3>
+                  <p class="text-blue-600 font-semibold mb-4">Indra • Ago 2020 – Sep 2021</p>
+                  <ul class="space-y-3 text-gray-700">
+                    <li class="flex items-start"><span class="text-blue-500 mr-2">▶</span>Pipelines ETL avanzados en Python y PySpark</li>
+                    <li class="flex items-start"><span class="text-blue-500 mr-2">▶</span>Procesamiento de datos en la nube</li>
+                    <li class="flex items-start"><span class="text-blue-500 mr-2">▶</span>Dashboards interactivos en Power BI</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="hidden lg:block"></div>
+          </div>
+          
+          <!-- Vooxell -->
+          <div class="relative lg:grid lg:grid-cols-2 lg:gap-8 items-center">
+            <div class="hidden lg:block"></div>
+            <div class="lg:pl-8">
+              <div class="group bg-gradient-to-br from-purple-50 to-pink-50 p-8 rounded-3xl border-l-4 border-purple-400 hover:border-purple-500 hover:shadow-2xl transition-all duration-500 hover:scale-105">
+                <div class="absolute inset-0 bg-gradient-to-br from-purple-500 to-pink-500 rounded-3xl opacity-0 group-hover:opacity-5 transition-opacity duration-500"></div>
+                <div class="relative z-10">
+                  <h3 class="text-2xl font-bold text-gray-900 mb-2">Consultor Power BI</h3>
+                  <p class="text-purple-600 font-semibold mb-4">Vooxell • Ago 2019 – Ene 2020</p>
+                  <ul class="space-y-3 text-gray-700">
+                    <li class="flex items-start"><span class="text-purple-500 mr-2">▶</span>Dashboards avanzados para análisis de negocio</li>
+                    <li class="flex items-start"><span class="text-purple-500 mr-2">▶</span>Automatización de KPIs estratégicos</li>
+                    <li class="flex items-start"><span class="text-purple-500 mr-2">▶</span>Capacitación de usuarios finales</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>  
+
+    <!-- Proyectos Destacados -->
+    <section id="projects" class="relative py-20 bg-gradient-to-br from-slate-50 to-gray-100 overflow-hidden">
+      <!-- Elementos decorativos -->
+      <div class="absolute top-0 left-0 w-64 h-64 bg-gradient-to-br from-blue-100 to-cyan-100 rounded-full opacity-20 -translate-x-1/2 -translate-y-1/2 floating"></div>
+      <div class="absolute bottom-0 right-0 w-80 h-80 bg-gradient-to-br from-indigo-100 to-purple-100 rounded-full opacity-20 translate-x-1/2 translate-y-1/2 floating-delayed"></div>
+      
+      <div class="relative max-w-7xl mx-auto px-6">
+        <!-- Header de sección -->
+        <div class="text-center mb-16">
+          <span class="inline-block px-4 py-2 bg-gradient-to-r from-purple-100 to-blue-100 text-purple-800 rounded-full text-sm font-semibold mb-4">
+            Casos de éxito
+          </span>
+          <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            Proyectos 
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-600">Destacados</span>
+          </h2>
+          <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+            Soluciones innovadoras que han transformado la gestión de datos en organizaciones
+          </p>
+        </div>
+
+        <!-- Grid de proyectos -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Proyecto 1 -->
+          <div class="group relative bg-white p-8 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-blue-100 hover:border-blue-300 hover:scale-105">
+            <div class="absolute inset-0 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-3xl opacity-0 group-hover:opacity-5 transition-opacity duration-500"></div>
+            <div class="relative z-10">
+              <!-- Icono y badge -->
+              <div class="flex items-start justify-between mb-6">
+                <div class="w-16 h-16 bg-gradient-to-br from-blue-400 to-cyan-400 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <span class="text-2xl">☁️</span>
+                </div>
+                <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-semibold">AWS</span>
+              </div>
+              
+              <h3 class="text-2xl font-bold text-gray-900 mb-4">Arquitectura de Datos en AWS</h3>
+              <p class="text-gray-600 mb-6 leading-relaxed">
+                Diseño e implementación de arquitecturas escalables en AWS con S3, Glue, Redshift y Athena para procesar más de 10TB de datos diarios con latencia mínima.
+              </p>
+              
+              <!-- Tecnologías -->
+              <div class="flex flex-wrap gap-2 mb-6">
+                <span class="px-3 py-1 bg-gradient-to-r from-blue-500 to-cyan-500 text-white text-xs rounded-full">S3</span>
+                <span class="px-3 py-1 bg-gradient-to-r from-blue-500 to-cyan-500 text-white text-xs rounded-full">Glue</span>
+                <span class="px-3 py-1 bg-gradient-to-r from-blue-500 to-cyan-500 text-white text-xs rounded-full">Redshift</span>
+                <span class="px-3 py-1 bg-gradient-to-r from-blue-500 to-cyan-500 text-white text-xs rounded-full">Athena</span>
+              </div>
+              
+              <!-- Métricas de impacto -->
+              <div class="grid grid-cols-2 gap-4 text-center">
+                <div>
+                  <div class="text-2xl font-bold text-blue-600">85%</div>
+                  <div class="text-xs text-gray-500">Reducción de costos</div>
+                </div>
+                <div>
+                  <div class="text-2xl font-bold text-cyan-600">10TB</div>
+                  <div class="text-xs text-gray-500">Datos diarios</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Proyecto 2 -->
+          <div class="group relative bg-white p-8 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-indigo-100 hover:border-indigo-300 hover:scale-105">
+            <div class="absolute inset-0 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-3xl opacity-0 group-hover:opacity-5 transition-opacity duration-500"></div>
+            <div class="relative z-10">
+              <!-- Icono y badge -->
+              <div class="flex items-start justify-between mb-6">
+                <div class="w-16 h-16 bg-gradient-to-br from-indigo-400 to-purple-400 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <span class="text-2xl">❄️</span>
+                </div>
+                <span class="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-xs font-semibold">SNOWFLAKE</span>
+              </div>
+              
+              <h3 class="text-2xl font-bold text-gray-900 mb-4">Migración a Snowflake</h3>
+              <p class="text-gray-600 mb-6 leading-relaxed">
+                Migración completa de infraestructura on-premise a Snowflake con pipelines robustos, orquestación dbt y cargas incrementales optimizadas.
+              </p>
+              
+              <!-- Tecnologías -->
+              <div class="flex flex-wrap gap-2 mb-6">
+                <span class="px-3 py-1 bg-gradient-to-r from-indigo-500 to-purple-500 text-white text-xs rounded-full">Snowflake</span>
+                <span class="px-3 py-1 bg-gradient-to-r from-indigo-500 to-purple-500 text-white text-xs rounded-full">dbt</span>
+                <span class="px-3 py-1 bg-gradient-to-r from-indigo-500 to-purple-500 text-white text-xs rounded-full">Snowpipe</span>
+                <span class="px-3 py-1 bg-gradient-to-r from-indigo-500 to-purple-500 text-white text-xs rounded-full">Python</span>
+              </div>
+              
+              <!-- Métricas de impacto -->
+              <div class="grid grid-cols-2 gap-4 text-center">
+                <div>
+                  <div class="text-2xl font-bold text-indigo-600">92%</div>
+                  <div class="text-xs text-gray-500">Mejora performance</div>
+                </div>
+                <div>
+                  <div class="text-2xl font-bold text-purple-600">Real-time</div>
+                  <div class="text-xs text-gray-500">Procesamiento</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Proyecto 3 -->
+          <div class="group relative bg-white p-8 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-green-100 hover:border-green-300 hover:scale-105">
+            <div class="absolute inset-0 bg-gradient-to-br from-green-500 to-teal-500 rounded-3xl opacity-0 group-hover:opacity-5 transition-opacity duration-500"></div>
+            <div class="relative z-10">
+              <!-- Icono y badge -->
+              <div class="flex items-start justify-between mb-6">
+                <div class="w-16 h-16 bg-gradient-to-br from-green-400 to-teal-400 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <span class="text-2xl">📡</span>
+                </div>
+                <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-semibold">IOT</span>
+              </div>
+              
+              <h3 class="text-2xl font-bold text-gray-900 mb-4">Ingestión IoT Real-time</h3>
+              <p class="text-gray-600 mb-6 leading-relaxed">
+                Arquitectura de streaming en tiempo real con AWS IoT Core, Kinesis y Lambda, procesando millones de eventos IoT por minuto.
+              </p>
+              
+              <!-- Tecnologías -->
+              <div class="flex flex-wrap gap-2 mb-6">
+                <span class="px-3 py-1 bg-gradient-to-r from-green-500 to-teal-500 text-white text-xs rounded-full">IoT Core</span>
+                <span class="px-3 py-1 bg-gradient-to-r from-green-500 to-teal-500 text-white text-xs rounded-full">Kinesis</span>
+                <span class="px-3 py-1 bg-gradient-to-r from-green-500 to-teal-500 text-white text-xs rounded-full">Lambda</span>
+                <span class="px-3 py-1 bg-gradient-to-r from-green-500 to-teal-500 text-white text-xs rounded-full">Snowflake</span>
+              </div>
+              
+              <!-- Métricas de impacto -->
+              <div class="grid grid-cols-2 gap-4 text-center">
+                <div>
+                  <div class="text-2xl font-bold text-green-600">2M+</div>
+                  <div class="text-xs text-gray-500">Eventos/min</div>
+                </div>
+                <div>
+                  <div class="text-2xl font-bold text-teal-600">< 1s</div>
+                  <div class="text-xs text-gray-500">Latencia</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Proyecto 4 -->
+          <div class="group relative bg-white p-8 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-orange-100 hover:border-orange-300 hover:scale-105">
+            <div class="absolute inset-0 bg-gradient-to-br from-orange-500 to-red-500 rounded-3xl opacity-0 group-hover:opacity-5 transition-opacity duration-500"></div>
+            <div class="relative z-10">
+              <!-- Icono y badge -->
+              <div class="flex items-start justify-between mb-6">
+                <div class="w-16 h-16 bg-gradient-to-br from-orange-400 to-red-400 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <span class="text-2xl">🤖</span>
+                </div>
+                <span class="px-3 py-1 bg-orange-100 text-orange-800 rounded-full text-xs font-semibold">MLOPS</span>
+              </div>
+              
+              <h3 class="text-2xl font-bold text-gray-900 mb-4">MLOps & APIs Escalables</h3>
+              <p class="text-gray-600 mb-6 leading-relaxed">
+                Automatización completa de pipelines ML en SageMaker con APIs de alto rendimiento usando API Gateway y Lambda para serving de modelos.
+              </p>
+              
+              <!-- Tecnologías -->
+              <div class="flex flex-wrap gap-2 mb-6">
+                <span class="px-3 py-1 bg-gradient-to-r from-orange-500 to-red-500 text-white text-xs rounded-full">SageMaker</span>
+                <span class="px-3 py-1 bg-gradient-to-r from-orange-500 to-red-500 text-white text-xs rounded-full">API Gateway</span>
+                <span class="px-3 py-1 bg-gradient-to-r from-orange-500 to-red-500 text-white text-xs rounded-full">Lambda</span>
+                <span class="px-3 py-1 bg-gradient-to-r from-orange-500 to-red-500 text-white text-xs rounded-full">MLflow</span>
+              </div>
+              
+              <!-- Métricas de impacto -->
+              <div class="grid grid-cols-2 gap-4 text-center">
+                <div>
+                  <div class="text-2xl font-bold text-orange-600">99.9%</div>
+                  <div class="text-xs text-gray-500">Uptime</div>
+                </div>
+                <div>
+                  <div class="text-2xl font-bold text-red-600">200ms</div>
+                  <div class="text-xs text-gray-500">Response time</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contact" class="relative py-20 bg-gradient-to-br from-blue-900 via-indigo-900 to-purple-900 text-white overflow-hidden">
+      <!-- Elementos decorativos -->
+      <div class="absolute top-0 left-0 w-96 h-96 bg-gradient-to-br from-blue-400 to-cyan-400 rounded-full opacity-10 -translate-x-1/2 -translate-y-1/2 floating"></div>
+      <div class="absolute bottom-0 right-0 w-80 h-80 bg-gradient-to-br from-indigo-400 to-purple-400 rounded-full opacity-10 translate-x-1/2 translate-y-1/2 floating-delayed"></div>
+      
+      <!-- Patrón de fondo -->
+      <div class="absolute inset-0" style="background-image:url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2240%22 height=%2240%22%3E%3Ccircle cx=%2220%22 cy=%2220%22 r=%221%22 fill=%22white%22 fill-opacity=%220.1%22/%3E%3C/svg%3E'); background-repeat:repeat; opacity:0.3;"></div>
+      
+      <div class="relative max-w-4xl mx-auto px-6 text-center">
+        <!-- Header -->
+        <div class="mb-16">
+          <span class="inline-block px-4 py-2 bg-white bg-opacity-20 text-white rounded-full text-sm font-semibold mb-4 hero-glass">
+            ¿Hablamos?
+          </span>
+          <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-glow">
+            ¡Construyamos algo 
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-blue-300 to-indigo-300">extraordinario!</span>
+          </h2>
+          <p class="text-xl opacity-90 max-w-2xl mx-auto leading-relaxed">
+            ¿Tienes un proyecto desafiante? ¿Necesitas optimizar tu arquitectura de datos? 
+            <span class="text-cyan-300 font-semibold">¡Hablemos y hagámoslo realidad!</span>
+          </p>
+        </div>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-col sm:flex-row gap-6 justify-center mb-16">
+          <a href="mailto:roberto.ayra@dominio.com" class="group relative px-8 py-4 bg-white text-gray-900 rounded-full font-semibold transition-all duration-300 hover:scale-105 hover:shadow-2xl flex items-center justify-center space-x-3">
+            <span class="text-2xl">📧</span>
+            <span class="relative z-10">Enviar Email</span>
+            <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          </a>
+          <a href="https://linkedin.com/in/robertoayra" target="_blank" class="group px-8 py-4 border-2 border-white text-white rounded-full font-semibold transition-all duration-300 hover:bg-white hover:text-gray-900 hero-glass flex items-center justify-center space-x-3">
+            <span class="text-2xl">💼</span>
+            <span>Conectar en LinkedIn</span>
+          </a>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="text-center p-6 hero-glass rounded-2xl">
+            <div class="text-3xl mb-4">🌍</div>
+            <h3 class="font-semibold mb-2">Ubicación</h3>
+            <p class="opacity-80 text-sm">Lima, Perú</p>
+            <p class="opacity-60 text-xs mt-1">Trabajo remoto & presencial</p>
+          </div>
+          
+          <div class="text-center p-6 hero-glass rounded-2xl">
+            <div class="text-3xl mb-4">⏰</div>
+            <h3 class="font-semibold mb-2">Disponibilidad</h3>
+            <p class="opacity-80 text-sm">Lun - Vie</p>
+            <p class="opacity-60 text-xs mt-1">9:00 - 18:00 PET</p>
+          </div>
+          
+          <div class="text-center p-6 hero-glass rounded-2xl">
+            <div class="text-3xl mb-4">💬</div>
+            <h3 class="font-semibold mb-2">Respuesta</h3>
+            <p class="opacity-80 text-sm">< 24 horas</p>
+            <p class="opacity-60 text-xs mt-1">Normalmente mismo día</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="relative bg-gray-900 text-gray-300 py-12">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <!-- Brand -->
+          <div class="md:col-span-2">
+            <h3 class="text-2xl font-bold text-white mb-4">Roberto Ayra</h3>
+            <p class="text-gray-400 mb-6 leading-relaxed">
+              Data Engineer Senior especializado en arquitecturas cloud escalables, 
+              transformando datos en decisiones estratégicas que impulsan el crecimiento empresarial.
+            </p>
+            <div class="flex space-x-4">
+              <a href="mailto:roberto.ayra@dominio.com" class="w-10 h-10 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                <span class="text-white">📧</span>
+              </a>
+              <a href="https://linkedin.com/in/robertoayra" target="_blank" class="w-10 h-10 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                <span class="text-white">💼</span>
+              </a>
+              <a href="https://github.com/robertoayra" target="_blank" class="w-10 h-10 bg-gradient-to-r from-gray-700 to-gray-900 rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                <span class="text-white">⚡</span>
+              </a>
+            </div>
+          </div>
+          
+          <!-- Quick Links -->
+          <div>
+            <h4 class="text-white font-semibold mb-4">Enlaces</h4>
+            <ul class="space-y-2 text-sm">
+              <li><a href="#about" class="hover:text-cyan-400 transition-colors">Sobre Mí</a></li>
+              <li><a href="#skills" class="hover:text-cyan-400 transition-colors">Habilidades</a></li>
+              <li><a href="#work" class="hover:text-cyan-400 transition-colors">Experiencia</a></li>
+              <li><a href="#projects" class="hover:text-cyan-400 transition-colors">Proyectos</a></li>
+            </ul>
+          </div>
+          
+          <!-- Technologies -->
+          <div>
+            <h4 class="text-white font-semibold mb-4">Especialidades</h4>
+            <ul class="space-y-2 text-sm">
+              <li class="hover:text-cyan-400 transition-colors">AWS & Cloud</li>
+              <li class="hover:text-cyan-400 transition-colors">Snowflake</li>
+              <li class="hover:text-cyan-400 transition-colors">MLOps</li>
+              <li class="hover:text-cyan-400 transition-colors">Data Visualization</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="border-t border-gray-700 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+          <p class="text-gray-400 text-sm">
+            &copy; 2025 Roberto Ayra. Todos los derechos reservados.
+          </p>
+          <p class="text-gray-500 text-xs mt-4 md:mt-0">
+            Diseñado con 💙 y mucho ☕ • Hecho con TailwindCSS
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    
+    <!-- Navegación JavaScript -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const hamburger = document.querySelector('.hamburger');
+        
+        mobileMenuBtn.addEventListener('click', function() {
+          const isOpen = !mobileMenu.classList.contains('translate-x-full');
+          
+          if (isOpen) {
+            mobileMenu.classList.add('translate-x-full');
+            hamburger.classList.remove('active');
+          } else {
+            mobileMenu.classList.remove('translate-x-full');
+            hamburger.classList.add('active');
+          }
+        });
+        
+        // Close mobile menu when clicking on links
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+        mobileNavLinks.forEach(link => {
+          link.addEventListener('click', function() {
+            mobileMenu.classList.add('translate-x-full');
+            hamburger.classList.remove('active');
+          });
+        });
+        
+        // Active section tracking
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link[data-section]');
+        
+        function updateActiveSection() {
+          let current = '';
+          
+          sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            
+            if (window.scrollY >= (sectionTop - 200)) {
+              current = section.getAttribute('id');
+            }
+          });
+          
+          navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('data-section') === current) {
+              link.classList.add('active');
+            }
+          });
+        }
+        
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+              target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+              });
+            }
+          });
+        });
+        
+        // Update active section on scroll
+        window.addEventListener('scroll', updateActiveSection);
+        updateActiveSection(); // Initialize
+      });
+    </script>
+
+  </main>
+</body>
+</html>
